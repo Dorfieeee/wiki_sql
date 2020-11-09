@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid" id="detail">        
+        {% if content %}
+            <form action="{% url 'editor' %}" method="GET">
+                <button class="first-heading__btn" type="submit" name="title" value="{{title}}"><i class="fas fa-edit"></i></button>
+            </form>
+            {{content|safe}}
+        {% else %}
+        <h1>Ooops... Nothing found here!</h1>
+        <p>
+            Wiki could not find anything related to <strong>{{title}}</strong>.
+        </p>
+        {% endif %}
+    </div>
+{% endblock %}

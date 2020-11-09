@@ -1,0 +1,40 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia - Editor
+{% endblock %}
+
+{% block theme %}
+    main-color
+{% endblock %}
+
+{% block body %}
+    <div class="editor container-fluid">
+        <form action="{% url 'editor' %}" method="POST">
+            {% csrf_token %}
+            <div class="editor__header col-12 row">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Editor</span>
+                      </div>
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="Title-name">Title</span>
+                    </div>
+                    <input type="text" class="form-control" name="title" id="title" 
+                    aria-label="Title" aria-describedby="Title-name" value="{{title|safe}}"
+                    {% if title %} readonly {% endif %} required
+                    />
+                    <div class="input-group-append" title="Save">
+                        <button type="submit" class="btn btn-outline-dark"><i class="fas fa-save"></i></button>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-12 row">
+                <div id="editor__raw" class="col-6">
+                    <textarea id="content" name="content" class="scrollbar">{{content}}</textarea>
+                </div>  
+                <div id="editor__preview" class="col-6 scrollbar"></div>
+            </div>
+        </form>
+    </div>    
+{% endblock %}
