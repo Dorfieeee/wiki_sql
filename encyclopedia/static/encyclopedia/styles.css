@@ -1,3 +1,7 @@
+:root {
+    --main-color: #f0f0f0;
+}
+
 body {
     margin: 0;
     background-color: white;
@@ -9,16 +13,18 @@ code {
 
 h1 {
     margin-top: 0px;
-    padding-top: 20px;
 }
 
 textarea {
     height: 90vh;
-    width: 80%;
+    width: 100%;
+    resize: none;
+    border: none;
 }
 
 .main {
     padding: 10px;
+    overflow: hidden;
 }
 
 .search {
@@ -28,11 +34,75 @@ textarea {
 }
 
 .sidebar {
-    background-color: #f0f0f0;
+    background-color: var(--main-color);
     height: 100vh;
     padding: 20px;
 }
 
 .sidebar h2 {
     margin-top: 5px;
+}
+
+.first-heading__btn{
+    float: right;
+    border: none;
+    color: rgba(0, 0, 0, 0.5);
+    background: transparent;
+    font-size: 20px;
+    position: relative;
+    top: 20px;
+    right: 10px;
+}
+
+.first-heading__btn:hover {
+    color: #000;
+}
+
+.first-heading__btn:focus {
+    outline: none;
+}
+
+.editor {
+    overflow: hidden;
+}
+
+#editor__raw > textarea:first-of-type {
+    width: 100%;
+    resize: none;
+    border: none;
+    background-color: #FFF;
+    overflow-y: scroll;
+}
+
+#editor__preview {
+    background-color: var(--main-color);
+    width: 100%;
+    overflow-y: scroll;
+    padding: 0;
+}
+
+#editor__raw {
+    padding: 0;
+}
+
+.main-color {
+    background-color: var(--main-color);
+}
+
+.scrollbar {
+    scrollbar-color: #5a565b #cecece;
+    scrollbar-width: thin;
+}
+
+div#detail h1,
+div#detail h2,
+div#detail h3,
+div#detail h4,
+div#detail h5,
+div#detail h6 {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+div#detail > h1:first-of-type {
+    line-height: 1.5;
 }
