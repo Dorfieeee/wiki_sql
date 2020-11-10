@@ -19,7 +19,12 @@ h1 {
     margin-top: 0px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: Goldman;
 }
 
@@ -62,7 +67,7 @@ textarea {
     margin-top: 5px;
 }
 
-.first-heading__btn{
+.first-heading__btn {
     float: right;
     border: none;
     color: rgba(0, 0, 0, 0.5);
@@ -85,7 +90,7 @@ textarea {
     overflow: hidden;
 }
 
-#editor__raw > textarea:first-of-type {
+#editor__raw>textarea:first-of-type {
     width: 100%;
     resize: none;
     border: none;
@@ -124,7 +129,7 @@ div#detail h3 {
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-div#detail > h1:first-of-type {
+div#detail>h1:first-of-type {
     line-height: 1.5;
 }
 
@@ -132,8 +137,8 @@ div#detail > h1:first-of-type {
     display: none;
 }
 
-.sidebar ul > a::after {
-	content: '\1F6C6';
+.sidebar ul>a::after {
+    content: '\1F6C6';
     position: absolute;
     left: 12px;
     opacity: 0;
@@ -141,34 +146,34 @@ div#detail > h1:first-of-type {
     line-height: 2.5;
 }
 
-.sidebar ul > a:hover::after {
-	opacity: 1;
+.sidebar ul>a:hover::after {
+    opacity: 1;
 }
 
-.sidebar > ul:first-of-type {
-	padding: 0;
-	display: flex;
+.sidebar>ul:first-of-type {
+    padding: 0;
+    display: flex;
     flex-direction: column;
     font-size: 14px;
 }
 
-.sidebar ul > a {
-	padding: 5px 0;
-	text-indent: 20%;
-	text-decoration: none;
-	color: rgba(0, 0, 0, 0.800);
-	margin-bottom: 3px;
-	display: block;
+.sidebar ul>a {
+    padding: 5px 0;
+    text-indent: 20%;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.800);
+    margin-bottom: 3px;
+    display: block;
 }
 
-.sidebar ul > a::first-letter {
-	text-transform: capitalize;
-	font-size: 1.3rem;
-	color: black;
+.sidebar ul>a::first-letter {
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    color: black;
 }
 
 .navbar-brand {
-	display: block;
+    display: block;
     text-align: center;
     font-family: Goldman;
     padding: 0 1rem;
@@ -176,7 +181,7 @@ div#detail > h1:first-of-type {
     height: 56px;
     margin: -1rem;
     font-size: 36px;
-	background: -webkit-linear-gradient(120deg, #ff8080 0%, #6284FF 50%, #00ff2f 100%);
+    background: -webkit-linear-gradient(120deg, #ff8080 0%, #6284FF 50%, #00ff2f 100%);
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -191,6 +196,7 @@ div#detail > h1:first-of-type {
         flex: 0 0 100%;
         max-width: 100%;
     }
+
     .input-group-append[title='Preview'] {
         display: block;
     }
@@ -201,9 +207,11 @@ div#detail > h1:first-of-type {
         left: calc(var(--sidebar-width) * -1);
         position: absolute;
     }
+
     .main {
         margin-left: 0;
     }
+
     .toggler {
         display: block;
     }
