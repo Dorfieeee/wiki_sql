@@ -72,14 +72,16 @@ def editor(request):
         if 'title' in request.GET:
             title = request.GET.get('title')
             content = util.get_entry(title)
+            # if content != None => entry was found 
+            if content is None:   
+                content = ''
 
             context = {
                 "content": content,
                 "title": title,
             } 
-            # if content != None => entry was found 
-            if content != None:   
-                return render(request, "encyclopedia/editor.html", context)
+            
+            return render(request, "encyclopedia/editor.html", context)
     
         # => redirect to editor page
         return HttpResponseRedirect('/editor')
@@ -90,4 +92,5 @@ def editor(request):
 
         util.save_entry(title, content)
 
-        return HttpResponseRedirect('/wiki/%s' % request.POST['title'])
+
+        return HttpResponseRedirect('/wiki/%s' % title)

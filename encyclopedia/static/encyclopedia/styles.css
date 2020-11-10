@@ -4,6 +4,10 @@
     --primary: #f8f9fa;
     --secondary: #343a40;
     --sidebar-width: 200px;
+    --navbar-height: 56px;
+    --editor-title-height: 54px;
+    --main-padding: 10px;
+    --editor-height: calc(100vh - var(--navbar-height) - var(--editor-title-height) - 2 * var(--main-padding))
 }
 
 body {
@@ -33,7 +37,7 @@ a:hover {
 }
 
 textarea {
-    height: calc(100vh - 135px);
+    height: var(--editor-height);
     width: 100%;
     resize: none;
     border: none;
@@ -53,7 +57,7 @@ textarea {
 
 .sidebar {
     background-color: var(--primary);
-    height: calc(100vh - 56px);
+    height: calc(100vh - var(--navbar-height));
     padding: 10px 0;
     position: absolute;
     width: var(--sidebar-width);
@@ -102,8 +106,9 @@ textarea {
     background-color: var(--primary);
     width: 100%;
     overflow-y: scroll;
-    padding: 0;
+    padding: 0 1rem;
     display: block;
+    height: var(--editor-height);
 }
 
 #editor__raw {
@@ -123,9 +128,9 @@ textarea {
     display: none;
 }
 
-div#detail h1,
-div#detail h2,
-div#detail h3 {
+#detail h1,
+#detail h2,
+#detail h3 {
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
@@ -154,7 +159,6 @@ div#detail>h1:first-of-type {
     padding: 0;
     display: flex;
     flex-direction: column;
-    font-size: 14px;
 }
 
 .sidebar ul>a {
@@ -178,11 +182,12 @@ div#detail>h1:first-of-type {
     font-family: Goldman;
     padding: 0 1rem;
     width: 150px;
-    height: 56px;
+    height: var(--navbar-height);
     margin: -1rem;
     font-size: 36px;
     background: -webkit-linear-gradient(120deg, #ff8080 0%, #6284FF 50%, #00ff2f 100%);
     background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 

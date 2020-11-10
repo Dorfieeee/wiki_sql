@@ -14,7 +14,10 @@
         {% else %}
         <h1>Ooops... Nothing found here!</h1>
         <p>
-            Wiki could not find anything related to <strong>{{title}}</strong>.
+            Wiki could not find anything related to your search.
+        </p>
+        <p>
+            Would you like to <a href="{% url 'editor' %}?title={{title}}">create new</a> article for <strong>{{title}}</strong>?
         </p>
         {% endif %}
     </div>

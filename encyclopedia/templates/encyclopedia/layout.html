@@ -32,6 +32,8 @@
                 {% endblock %}
             </div>
         </div>
-        <script src="{% static 'encyclopedia/scripts.js' %}" type="text/javascript"></script>
+        {% block script %}
+        {% endblock %}
+        <script src="{% static 'encyclopedia/scripts.js' %}"></script> 
     </body>
 </html>

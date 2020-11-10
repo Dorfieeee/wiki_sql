@@ -36,8 +36,12 @@
                 <div id="editor__raw" class="col-6">
                     <textarea id="content" name="content" class="scrollbar">{{content}}</textarea>
                 </div>  
-                <div id="editor__preview" class="col-6 scrollbar"></div>
+                <div id="editor__preview" class="col-6 scrollbar">
+                    <div id="detail"></div>
+                </div>                    
             </div>
         </form>
-    </div>    
+    </div>     
+    {% load static %}  
+    <script src="{% static 'encyclopedia/editor.js' %}"></script>
 {% endblock %}
