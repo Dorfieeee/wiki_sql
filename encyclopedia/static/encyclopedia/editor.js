@@ -1,17 +1,10 @@
-class Markdown extends String {
-    constructor() {
-        super()
-        this.sanitazed = false
-        this.soiled = false
-    }
+class Markdown {
     // reveil escaped characters
     soil = (str) => {
-        this.soiled = true
         return JSON.stringify(str).trim().split('').slice(0,-1).join('')
     }
     // sanitaze from HTML tags
     sanitaze = (str) => {
-        this.sanitazed = true
         return (str
             .replace(/</g, '&lt')
             .replace(/>/g, '&gt')
@@ -23,13 +16,9 @@ class Markdown extends String {
             return str
         }
 
-        if (!this.soiled) {
-            str = this.soil(str)
-        }
-        
-        if (!this.sanitazed) {
-            str = this.sanitaze(str)
-        }
+        str = this.soil(str)
+    
+        str = this.sanitaze(str)
 
         const ulist = /s/g
         // headers tags lookup $1 = prefix, $2 = content of header
@@ -92,6 +81,7 @@ class Markdown extends String {
     }
 }
 
+
 const onLoad = () => {        
     const textarea = document.getElementById('content')
     const preview = document.getElementById('detail')
@@ -102,6 +92,7 @@ const onLoad = () => {
     }
 
     textarea.addEventListener('keyup', (e) => {
+        const markdowner = new Markdown()
         preview.innerHTML = markdowner.convert(e.target.value)
     })
 }
