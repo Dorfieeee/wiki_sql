@@ -1,23 +1,46 @@
-const onLoad = () => {        
-    const markup = document.getElementById('content')
-    const preview = document.getElementById('detail')
-    const getHeader = (e) => {
-        const header = /(?:^#{1}|^\\"#{1})([\w\d\s:(),-]+)(?:#*\s*(?:\\")?$)/
-        let raw = JSON.stringify(e.target.value)
-        raw = raw.replaceAll('\"', '')
-        let lines = raw.split('\\n')
-        lines = lines.map(line => {
-            if (header.test(line)) {
-                cleaned = line.replaceAll('#', '').trim()
-                return `<h1>${cleaned}</h1>`
-            }
-            cleaned = line.trim()
-            return `<p>${cleaned}</p>`
-        })
-        preview.innerHTML = lines.join('')
+class Markdown extends String {
+    constructor(str) {
+        super(str)
+        this.str = str
+        this.sanitazed = false
+        this.soiled = false
+        // reveil escaped characters
+        this.soil = () => {
+            this.str = JSON.stringify(this.str).replace(/^"(.+)"$/, '$1').trim()
+            this.soiled = true
+        }
+        // sanitaze from HTML tags
+        this.sanitaze = () => {
+            this.str = this.str.replace(/</g, '&lt').replace(/>/g, '&gt')
+            this.sanitazed = true
+        }
     }
-    markup.addEventListener('keyup', (e) => {
-        
+
+    show = () => {
+        return this.str
+    }
+
+    convert = () => {
+        if (!this.soiled) {
+            this.soil()
+        }
+
+        // code here
+
+        if (!this.sanitazed) {
+            this.sanitaze()
+        }
+        return this.str
+    }
+}
+
+const onLoad = () => {        
+    const textarea = document.getElementById('content')
+    const preview = document.getElementById('detail')
+
+    textarea.addEventListener('keyup', (e) => {
+        const markdowner = new Markdown(e.target.value)
+        preview.innerHTML = markdowner.convert()
     })
 }
 
