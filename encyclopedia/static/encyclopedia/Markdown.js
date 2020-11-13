@@ -24,13 +24,15 @@ export default class Markdown {
         };
 
         const inline_elements = {
-            'code': /`{3}\s?(.+?)\s?`{3}/g,                         // $1 content
+            'code': /`{3}(.+?)`{3}/g,                         // $1 content
             // $1 content, $2 href='url'
             'a':    /\[([\w]+\s*[^\]]*)\]\(((?:\b(https?|ftp|file):\/\/)?[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]*)\)/g,
             'b':    /\*{2}(.+?)\*{2}/g,                             // $1 content
         };
 
         let block_tokens = [];
+        let consecutive_counter = 0;
+
 
         while (src) {
             let match;
@@ -44,7 +46,7 @@ export default class Markdown {
             
             if ((block_elements['ul']).test(src)) {
                 match = src.match(block_elements['ul'])
-                block_tokens.push(`<ul><li>${match[1]}</li></ul>`)
+                block_tokens.push(`<li>${match[1]}</li>`)
                 src = src.substring(match[0].length);
                 // start another loop?
                 continue;
@@ -66,8 +68,24 @@ export default class Markdown {
             }
         };
 
-        
+        return block_tokens
+        .reduce((acc, token) => {
+            token = token.trim()
+            .replace(inline_elements['code'], '<code>$1</code>')
+            .replace(inline_elements['a'], '<a href="$2">$1</a>')
+            .replace(inline_elements['b'], '<b>$1</b>') 
 
-        return block_tokens.join('')
+            if (/^(<li>)/.test(token) && consecutive_counter === 0) {
+                consecutive_counter++;
+                return acc.concat('<ul>' + token);
+
+            } else if (!/^(<li>)/.test(token) && consecutive_counter > 0) {
+                consecutive_counter = 0;
+                return acc.concat('</ul>' + token);
+            }
+
+            return acc.concat(token)
+        }, [])
+        .join('');
     };
 }
