@@ -18,7 +18,7 @@ def index(request, **kwargs):
         title = None  
 
     context = {
-        "entries": [entry.replace('_', ' ') for entry in entries],
+        "entries": entries,
         "title": title,
     }
 
@@ -46,7 +46,7 @@ def wiki(request, title):
 def search(request):
     if request.method == 'GET':
         if request.GET.get('q'):
-            title = request.GET.get('q').replace(' ', '_')
+            title = request.GET.get('q')
             return wiki(request, title)
         else:
             return HttpResponseRedirect('/')        
