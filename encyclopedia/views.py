@@ -18,7 +18,7 @@ def index(request, **kwargs):
         title = None  
 
     context = {
-        "entries": entries,
+        "entries": [entry.replace('_', ' ') for entry in entries],
         "title": title,
     }
 
@@ -37,7 +37,7 @@ def wiki(request, title):
 
     context = {
         "content": markdowner.convert(content),
-        "title": title,
+        "title": title.replace('_', ' '),
     }
     
     return render(request, "encyclopedia/detail.html", context)
@@ -46,7 +46,7 @@ def wiki(request, title):
 def search(request):
     if request.method == 'GET':
         if request.GET.get('q'):
-            title = request.GET.get('q')
+            title = request.GET.get('q').replace(' ', '_')
             return wiki(request, title)
         else:
             return HttpResponseRedirect('/')        

@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="editor container-fluid">
+    <div class="container-fluid">
         <form action="{% url 'editor' %}" method="POST">
             {% csrf_token %}
             <div class="editor__header row">
@@ -25,19 +25,19 @@
                     {% if title %} readonly {% endif %} required
                     />
                     <div class="input-group-append" title="Preview">
-                        <button type="button" class="btn btn-outline-dark"><i class="fas fa-eye"></i></button>
+                        <button id="preview-toggler" type="button" class="btn btn-outline-dark"><i class="fas fa-eye"></i></button>
                     </div>
                     <div class="input-group-append" title="Save">
                         <button type="submit" class="btn btn-outline-dark"><i class="fas fa-save"></i></button>
                     </div>
                   </div>
             </div>
-            <div class="row">
-                <div id="editor__raw" class="col-6">
-                    <textarea id="content" name="content" class="scrollbar">{{content}}</textarea>
+            <div id="editor" class="editor row">
+                <div id="editor__raw">
+                    <textarea id="editor__raw--content" name="content" class="scrollbar">{{content}}</textarea>
                 </div>  
-                <div id="editor__preview" class="col-6 scrollbar">
-                    <div id="detail"></div>
+                <div id="editor__preview" class="scrollbar">
+                    <div id="editor__preview--content"></div>
                 </div>                    
             </div>
         </form>

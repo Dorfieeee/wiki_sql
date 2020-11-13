@@ -10,6 +10,7 @@
             <form action="{% url 'editor' %}" method="GET">
                 <button class="first-heading__btn" type="submit" name="title" value="{{title}}"><i class="fas fa-edit"></i></button>
             </form>
+            <h1>{{title}}</h1>
             {{content|safe}}
         {% else %}
         <h1>Ooops... Nothing found here!</h1>
