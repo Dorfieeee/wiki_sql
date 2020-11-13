@@ -254,6 +254,11 @@ a:hover {
         transition: transform 0.3s ease-in;
         z-index: 101;
     }
+    
+    .navbar {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
 
     #sidebar.toggled {
         transform: translateX(var(--sidebar-width));
