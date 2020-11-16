@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%710m*zic)#0u((qugw#1@e^ty!c)9j04956v@ly(_86n$rg)h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['wiki-like-pedia.herokuapp.com','127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['wiki-like-pedia.herokuapp.com','127.0.0.1', 'localhost', '86.169.79.88']
 
 
 # Application definition
@@ -80,13 +80,17 @@ WSGI_APPLICATION = 'wiki.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd5f6c7un7qq4da',
-        'USER': 'mgtobrfknqeubs',
-        'PASSWORD': 'ac02c6acbc4fffde27dd9c965725101cab2fff75cc54b31b8dee4c3b52d3f06f',
+        'NAME': 'd2uafdu60s8r66',
+        'USER': 'yzgkhxfosirhpp',
+        'PASSWORD': '18d4575c1b2f42a5c0ae739aeb8ea0ec5bcf1902e9a1b1cffdfcb86e8aa79e67',
         'HOST': 'ec2-54-246-85-151.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
+
+#import dj_database_url
+#db_from_env = dj_database_url.config(conn_max_age=600)
+#DATABASES['default'].update(db_from_env)
 
 
 # Password validation
