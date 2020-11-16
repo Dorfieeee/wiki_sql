@@ -25,7 +25,7 @@ SECRET_KEY = '%710m*zic)#0u((qugw#1@e^ty!c)9j04956v@ly(_86n$rg)h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['wiki-like-pedia.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['wiki-like-pedia.herokuapp.com','127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'wiki.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd5f6c7un7qq4da',
+        'USER': 'mgtobrfknqeubs',
+        'PASSWORD': 'ac02c6acbc4fffde27dd9c965725101cab2fff75cc54b31b8dee4c3b52d3f06f',
+        'HOST': 'ec2-54-246-85-151.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
